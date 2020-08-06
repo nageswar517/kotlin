@@ -452,7 +452,7 @@ abstract class BaseFirBuilder<T>(val baseSession: FirSession, val context: Conte
                     statements += generateResolvedAccessExpression(desugaredSource, resultVar)
                 } else {
                     appendAssignment()
-                    statements += generateAccessExpression(desugaredSource, argument.getReferencedNameAsName())
+                    statements += generateAccessExpression(desugaredSource, desugaredSource, argument.getReferencedNameAsName())
                 }
             } else {
                 appendAssignment()
