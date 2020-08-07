@@ -7,6 +7,7 @@ package org.jetbrains.kotlin.fir.analysis.checkers.declaration
 
 import org.jetbrains.kotlin.fir.analysis.cfa.AbstractFirPropertyInitializationChecker
 import org.jetbrains.kotlin.fir.analysis.cfa.FirPropertyInitializationAnalyzer
+import org.jetbrains.kotlin.fir.analysis.checkers.extended.*
 
 object CommonDeclarationCheckers : DeclarationCheckers() {
     override val declarationCheckers: List<FirBasicDeclarationChecker> = listOf(
@@ -15,6 +16,8 @@ object CommonDeclarationCheckers : DeclarationCheckers() {
         FirManyCompanionObjectsChecker,
         FirLocalEntityNotAllowedChecker,
         FirTypeParametersInObjectChecker,
+        RedundantVisibilityModifierChecker,
+        RedundantReturnUnitType
     )
 
     override val memberDeclarationCheckers: List<FirMemberDeclarationChecker> = listOf(
@@ -24,6 +27,9 @@ object CommonDeclarationCheckers : DeclarationCheckers() {
         FirSupertypeInitializedWithoutPrimaryConstructor,
         FirDelegationSuperCallInEnumConstructorChecker,
         FirPrimaryConstructorRequiredForDataClassChecker,
+        RedundantModalityModifierChecker,
+        RedundantExplicitTypeChecker,
+        RedundantSetterParameterTypeChecker
     )
 
     override val constructorCheckers: List<FirConstructorChecker> = listOf(
@@ -31,6 +37,7 @@ object CommonDeclarationCheckers : DeclarationCheckers() {
     )
 
     override val variableAssignmentCfaBasedCheckers: List<AbstractFirPropertyInitializationChecker> = listOf(
-        FirPropertyInitializationAnalyzer
+        FirPropertyInitializationAnalyzer,
+        VariableAssignmentChecker
     )
 }

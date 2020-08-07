@@ -5,22 +5,6 @@
 
 package org.jetbrains.kotlin.fir.analysis.checkers.declaration
 
-import org.jetbrains.kotlin.fir.analysis.cfa.AbstractFirPropertyInitializationChecker
-import org.jetbrains.kotlin.fir.analysis.checkers.extended.*
-
 object ExtendedDeclarationCheckers : DeclarationCheckers() {
-    override val declarationCheckers = listOf(
-        RedundantVisibilityModifierChecker,
-        RedundantReturnUnitType
-    )
 
-    override val memberDeclarationCheckers = listOf(
-        RedundantModalityModifierChecker,
-        RedundantExplicitTypeChecker,
-        RedundantSetterParameterTypeChecker
-    )
-
-    override val variableAssignmentCfaBasedCheckers: List<AbstractFirPropertyInitializationChecker> = listOf(
-        VariableAssignmentChecker
-    )
 }
